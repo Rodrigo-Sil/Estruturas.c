@@ -54,6 +54,9 @@ void add(int matricula) //função adcionar
     if(aux == NULL) // se não ha nós na arvore
     {
         raiz = novo;
+    }else if(aux->matricula == matricula){
+        printf("Adicao impossivel, chave %d duplicada! :'( \n", novo->matricula);
+        free(novo);
     }else if(aux->matricula > matricula) // se o valor é menor que a raiz atual do buscar
     { 
         aux->esq = novo; // raiz atual recebe nó a sua esquerda
@@ -202,13 +205,12 @@ int main()
             continue;
         }
 
-        printf("Deseja realizar outra operação?\n__________\n| S - sim |\n|_________|\n| N - não |\n|_________|\n");
+        printf("\nDeseja realizar outra operação?\n__________\n| S - sim |\n|_________|\n| N - não |\n|_________|\n");
         getchar();
         scanf("%c", &escolha);
         if (escolha != 's' && escolha != 'S'){
             break;
-        } 
-        
+        }  
     }
     
     return 0;
